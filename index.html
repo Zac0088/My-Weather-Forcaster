@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/styles.css"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer
+    src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDrYaBRTTfxYHK1z2ea3VzaBLPYUcwfkVw&libraries=places&callback=initAutocomplete'></script>
 </head>
 
 <body>
@@ -20,12 +22,16 @@
     <main class="container">
     <div class="row">
         <div id="cities" class="col-lg-4 col-md-12">
-            <form>
-                <label for="search-city">Search A City!</label>
-                <br>
-                <input id="city-search" type="text">
-                <input id="search-submit" class="btn btn-primary" type="submit">
-            </form>
+            <div class="field">
+                <label class="label">Search A Location</label>
+            <div class="control">
+                <input id="autocomplete" class="input" placeholder="Search Here" type="text"/>
+                <button id="search-submit" >Submit</button>
+            </div>
+            </div>
+            </div>
+            </div>
+                
             <ul id="city-list" class="list-group"></ul>
         </div>
         <div id="forecast-col" class="col-lg-8 col-md-12">
@@ -39,13 +45,48 @@
                 Wind Speed: <span id="wind-speed"></span>
         </div>
 
-        <p class="extended-forcast">
+        <p class="extended-forecast">
             <span id="day-1-date">Date</span>
             <br>
             Temp: <span id="day-1-temp"></span>
             <br>
             Humidity: <span id="day-1-humidity"></span>
         </p>
-    
+
+        <p class="extended-forecast">
+            <span id="day-2-date">Date</span>
+            <br>
+            Temp: <span id="day-2-temp"></span>
+            <br>
+            Humidity: <span id="day-2-humidity"></span>
+        </p>
+
+        <p class="extended-forecast">
+            <span id="day-3-date">Date</span>
+            <br>
+            Temp: <span id="day-3-temp"></span>
+            <br>
+            Humidity: <span id="day-3-humidity"></span>
+        </p>
+
+        <p class="extended-forecast">
+            <span id="day-4-date">Date</span>
+            <br>
+            Temp: <span id="day-4-temp"></span>
+            <br>
+            Humidity: <span id="day-4-humidity"></span>
+        </p>
+
+        <p class="extended-forecast">
+            <span id="day-5-date">Date</span>
+            <br>
+            Temp: <span id="day-5-temp"></span>
+            <br>
+            Humidity: <span id="day-5-humidity"></span>
+        </p>
+        </div>
+    </div>
+    </main>
+    <script src="./assets/script.js"></script>
 </body>
 </html>
