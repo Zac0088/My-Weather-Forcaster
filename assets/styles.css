@@ -5,6 +5,49 @@
   } */
 
   .jumbotron {
-    background-color: white;
-    color: black;
+    background: url(../images/jumbotron\ image.jpg) ;
+    color: white;
   }
+
+  .header{
+    text-align: center;
+  }
+
+ #label {
+  padding: 5px 0;
+  line-height: 1.5;
+ }
+
+ #search-submit {
+  margin-top: -5px;
+  margin: left -3px; 
+ }
+
+ #cities {
+  background-color: white;
+ }
+
+ #forecast-city-header {
+  font-weight: bold;
+  font-size: large;
+ }
+
+ .extended-forecast {
+  border: 2px solid green;
+  border-radius: 5px;
+  padding: 5px;
+  width: 19%;
+  margin: 5px 6px 0 0;
+  float: right;
+  font-size: small;
+ }
+ #current-weather {
+border: 2px solid black;
+border-radius: 5px;
+padding: 5px;
+ }
+
+ #city-list {
+  margin: 20px 0;
+
+ }
