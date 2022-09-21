@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Weather Dashboard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <script src="assets/styles.css"></script>
+    <link rel="stylesheet" href="assets/styles.css"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
-    <header class="jumbotron jumbotron fluid">
+    
+    <header class="jumbotron jumbotron-fluid">
         <div class="header container">
             <h1 class="display-4">My Weather Dashborad</h1>
         </div>
@@ -25,6 +26,26 @@
                 <input id="city-search" type="text">
                 <input id="search-submit" class="btn btn-primary" type="submit">
             </form>
+            <ul id="city-list" class="list-group"></ul>
+        </div>
+        <div id="forecast-col" class="col-lg-8 col-md-12">
+            <div id="current-weather">
+                <span id="forecast-city-header">City(Date)</span>
+                <br>
+                Tempreature: <span id="tempreature"></span>
+                <br>
+                Humidity: <span id="humidity"></span>
+                <br>
+                Wind Speed: <span id="wind-speed"></span>
+        </div>
+
+        <p class="extended-forcast">
+            <span id="day-1-date">Date</span>
+            <br>
+            Temp: <span id="day-1-temp"></span>
+            <br>
+            Humidity: <span id="day-1-humidity"></span>
+        </p>
     
 </body>
 </html>
