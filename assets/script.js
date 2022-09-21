@@ -1,3 +1,4 @@
+var apiKey = "c10049a3acdd6edc8eb4500188f2fafd"
 let autocomplete;
 
 function initAutocomplete() {
@@ -19,8 +20,10 @@ function addCity(newCitySearch) {
     $("city-list").append(newCityEl);
 }
 
+function currentWeather(city) {
+
 var info = {
-    URL: "https://api.openweathermap.org/data/2.5/uvi?lat=+latitude+&lon=+longitude+&appid=c10049a3acdd6edc8eb4500188f2fafd;"
+    URL: "https://api.openweathermap.org/data/2.5/weather?q=" + city + apiKey + "&units=metric",
 };
 
 $.ajax(info).then(function(response) {
@@ -32,3 +35,5 @@ $.ajax(info).then(function(response) {
     $("#humidity").text(humidity);
     $("#wind-speed").text(windSpeed);
 });
+}
+
