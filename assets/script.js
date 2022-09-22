@@ -7,7 +7,7 @@ function initAutocomplete() {
         {
             fields: ['place_id', 'geometry', 'name']
         });
-    
+
 }
 window.initAutocomplete = initAutocomplete;
 
@@ -22,41 +22,51 @@ function addCity(searchsubmit) {
 
 function currentWeather(city) {
 
-var info = {
-    URL: "https://api.openweathermap.org/data/2.5/weather?q=" + city + apiKey + "&units=metric",
-};
+    var info = {
+        URL: "https://api.openweathermap.org/data/2.5/weather?q=" + city + apiKey + "&units=metric",
+    };
 
-$.ajax(info).then(function(response) {
-    var currentDate = new Date();
-    var dateString = "(" + (currentDate.getDate() + 1) + "/"
-    + currentDate.getMonth() + "/"
-    + currentDate.getFullYear() + ")";
-    var forecastHeader = response.name + " " + dateString;
-    var iconURL = "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png";
-    var temperature = response.main.temp + "°C";
-    var humidity = response.main.humidity = "%";
-    var windSpeed = response.main.wind.speed = "km/h";
-    $("#forecast-city-header").text(forecastHeader);
-    $("#current-icon").attr("src", iconURL);
-    $("#temperature").text(temperature);
-    $("#humidity").text(humidity);
-    $("#wind-speed").text(windSpeed);
-});
+    $.ajax(info).then(function (response) {
+        var currentDate = new Date();
+        var dateString = "(" + (currentDate.getDate() + 1) + "/"
+            + currentDate.getMonth() + "/"
+            + currentDate.getFullYear() + ")";
+        var forecastHeader = response.name + " " + dateString;
+        var iconURL = "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png";
+        var temperature = response.main.temp + "°C";
+        var humidity = response.main.humidity = "%";
+        var windSpeed = response.main.wind.speed = "km/h";
+        $("#forecast-city-header").text(forecastHeader);
+        $("#current-icon").attr("src", iconURL);
+        $("#temperature").text(temperature);
+        $("#humidity").text(humidity);
+        $("#wind-speed").text(windSpeed);
+    });
 }
+
 
 function fiveDayForecast(city) {
-     var ajaxinfo ={URL: "https://api.openweathermap.org/data/2.5/weather?q=" + city + apiKey + "&units=metric",}
-     };
-     $.ajax(ajaxinfo.then(function(response){
+    var ajaxinfo = { URL: "https://api.openweathermap.org/data/2.5/weather?q=" + city + apiKey + "&units=metric",};
+
+    $.ajax(ajaxInfo).then(function (response) {
         var currentDate = new Date();
-        for (var day=1; day < 6; day++){
-        var dateString = "(" + (currentDate.getDate() + 1) + "/"
-        + currentDate.getMonth() + "/"
-        +currentDate.getFullYear() + ")";
-        $("#" + day + "-day-date").text(dateString);
-        
-     }
+        for (var day = 1; day < 6; day++) {
+            var dateString = "(" + (currentDate.getDate() + 1) + "/"
+                + currentDate.getMonth() + "/"
+                + currentDate.getFullYear() + ")";
+            $("#" + day + "-day-date").text(dateString);
+            var index = 2 + ((day - 1) * 8);
+            var dayForecast = response.list[index];
+            var iconURL = "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png";
+            $("#" + day + "-day-icon").attr("src", iconURL);
+            var temp = dayForecast.main.temp + "°C";
+            $("#" + day + "-day-temp").text(temp);
+            var humidity = dayForecast.main.humidity + "%";
+            $("#" + day + "-day-humidity").text(humidity);
+        }
+    });
 }
+
 
 // document.getElementById("searchsubmit").addEventListener("click", function() {
 //     addCity()
