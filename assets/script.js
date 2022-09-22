@@ -32,10 +32,12 @@ $.ajax(info).then(function(response) {
     + currentDate.getMonth() + "/"
     + currentDate.getFullYear() + ")";
     var forecastHeader = response.name + " " + dateString;
+    var iconURL = "http://openweathermap.org/img/wn/" + response.weather[0].icon;
     var temperature = response.main.temp + "°C";
     var humidity = response.main.humidity = "%";
     var windSpeed = response.main.wind.speed = "km/h";
     $("#forecast-city-header").text(forecastHeader);
+    $("#current-icon").attr("src", iconURL);
     $("#temperature").text(temperature);
     $("#humidity").text(humidity);
     $("#wind-speed").text(windSpeed);
