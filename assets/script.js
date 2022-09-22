@@ -1,13 +1,13 @@
 $(document).ready(function (){
+
  var apiKey = "c10049a3acdd6edc8eb4500188f2fafd"
 
 
  function addCity(newCity) {
-    var newCityEl = $('<button>').addClass("list-group-item")
-    newCityEl.text(newCity);
-    //  this hould append new el to city list
-    $("city-list").append(newCityEl);
-   }
+      var newCityEl = $("<button>").addClass("list-group-item")
+      newCityEl.text(newCity);
+     $("#city-list").append(newCityEl);
+    }
 
     function currentWeather(city) {
 
@@ -16,7 +16,7 @@ $(document).ready(function (){
          method: "GET"
         };
 
-        $.ajax(ajaxInfo).then(function (response) {
+        $.ajax(ajaxInfo).then(function(response) {
          var currentDate = new Date();
          var dateString = "(" + (currentDate.getDate() + 1) + "/"
          + currentDate.getMonth() + "/"
@@ -36,7 +36,7 @@ $(document).ready(function (){
 
 
    function fiveDayForecast(city) {
-     var ajaxinfo = { URL: "https://api.openweathermap.org/data/2.5/weather?q=" + city + apiKey + "&units=metric&appid=",
+     var ajaxInfo = { URL: "https://api.openweathermap.org/data/2.5/weather?q=" + city + apiKey + "&units=metric&appid=",
      method: "GET"
      };
 
@@ -59,11 +59,19 @@ $(document).ready(function (){
         });
     }
 
-  $("#search-submit").on("click", function(event){
+  $("#search-submit").on("click", function (event) {
      event.preventDefault();
-     var userInput = $("label").val();
+     var userInput = $("#label").val();
      addCity(userInput);
     });
+
+    $("#city-list").on("click", "button", function() {
+        var cityButton = $(this);
+        var city = cityButton.text();
+        currentWeather(city);
+        fiveDayForecast(city);
+    });
+});    
 
 
 
