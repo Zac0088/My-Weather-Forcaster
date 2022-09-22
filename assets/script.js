@@ -13,7 +13,7 @@ window.initAutocomplete = initAutocomplete;
 
 
 
-function addCity(newCitySearch) {
+function addCity(searchsubmit) {
     var newCityEl = $('<button>').addClass("list-group-item")
     newCityEl.text(newCityEl);
     //  this hould append new el to city list
@@ -36,4 +36,7 @@ $.ajax(info).then(function(response) {
     $("#wind-speed").text(windSpeed);
 });
 }
+document.getElementById("searchsubmit").addEventListener("click", function() {
+    addCity()
+})
 
