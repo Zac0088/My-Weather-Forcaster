@@ -32,7 +32,7 @@ $.ajax(info).then(function(response) {
     + currentDate.getMonth() + "/"
     + currentDate.getFullYear() + ")";
     var forecastHeader = response.name + " " + dateString;
-    var iconURL = "http://openweathermap.org/img/wn/" + response.weather[0].icon;
+    var iconURL = "http://openweathermap.org/img/wn/" + response.weather[0].icon + ".png";
     var temperature = response.main.temp + "°C";
     var humidity = response.main.humidity = "%";
     var windSpeed = response.main.wind.speed = "km/h";
@@ -43,6 +43,21 @@ $.ajax(info).then(function(response) {
     $("#wind-speed").text(windSpeed);
 });
 }
+
+function fiveDayForecast(city) {
+     var ajaxinfo ={URL: "https://api.openweathermap.org/data/2.5/weather?q=" + city + apiKey + "&units=metric",}
+     };
+     $.ajax(ajaxinfo.then(function(response){
+        var currentDate = new Date();
+        for (var day=1; day < 6; day++){
+        var dateString = "(" + (currentDate.getDate() + 1) + "/"
+        + currentDate.getMonth() + "/"
+        +currentDate.getFullYear() + ")";
+        $("#" + day + "-day-date").text(dateString);
+        
+     }
+}
+
 // document.getElementById("searchsubmit").addEventListener("click", function() {
 //     addCity()
 // })
