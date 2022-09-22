@@ -27,6 +27,11 @@ var info = {
 };
 
 $.ajax(info).then(function(response) {
+    var currentDate = new Date();
+    var dateString = "(" + (currentDate.getDate() + 1) + "/"
+    + currentDate.getMonth() + "/"
+    + currentDate.getFullYear() + ")";
+    var forecastHeader = response.name + " " + dateString;
     var temperature = response.main.temp + "°C";
     var humidity = response.main.humidity = "%";
     var windSpeed = response.main.wind.speed = "km/h";
@@ -36,7 +41,8 @@ $.ajax(info).then(function(response) {
     $("#wind-speed").text(windSpeed);
 });
 }
-document.getElementById("searchsubmit").addEventListener("click", function() {
-    addCity()
-})
+// document.getElementById("searchsubmit").addEventListener("click", function() {
+//     addCity()
+// })
+
 
